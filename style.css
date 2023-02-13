@@ -1,0 +1,55 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+}
+.body{
+  background: url("https://mcdn.wallpapersafari.com/medium/66/44/zldaLS.jpg");
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#scoreBox,#highscoreBox{
+  position: absolute;
+  top:9px;
+  right:20px;
+  font-size:19px;
+  font-weight:bold;
+  font-family: 'New Tegomin', serif;
+}
+#highscoreBox{
+  top:40px;
+}
+#board{
+  background: linear-gradient(rgb(170,236,170),rgb(236,236,167));
+  border: 1px solid black;
+  width: 90vmin;
+  height: 92vmin;
+  display: grid;
+  grid-template-columns:repeat(18,1fr);
+   grid-template-row:repeat(18,1fr);
+  
+}
+.snake{
+  background: purple;
+  border: .25vmin solid white;
+  border-radius: 12px ;
+}
+.head{
+  background: linear-gradient(red, yellow);
+  border: 1px solid purple;
+  border-radius:9px;
+  transform:scale(1.02);
+}
+.food{
+ 
+  background:linear-gradient(red,purple);
+  border: .25vmin solid black;
+  border-radius: 8px;
+}
