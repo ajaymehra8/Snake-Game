@@ -1,8 +1,13 @@
 // GAME CONSTANTS AND VARIABLE
+const upBtn=document.querySelector(".up");
+const downBtn=document.querySelector(".down");
+const leftBtn=document.querySelector(".left");
+const rightBtn=document.querySelector(".right");
+
 
 let inputDir={x:0,y:0};
 const foodSound=new Audio("food.mp3");
-const gameoverSound=new Audio("gameover.mp3");
+const gameoverSound=new Audio("gameOver.mp3");
 const moveSound=new Audio("move.mp3");
 const musicSound=new Audio ("music.mp3");
 let speed=2;
@@ -48,6 +53,7 @@ function gameEngine(){
     gameoverSound.play();
     musicSound.pause();
     inputDir={x:0,y:0};
+    speed=2;
     alert("Game Over, Press any key to restart");
     snakeArr=[{x:13,y:15}];
     musicSound.play();
@@ -59,6 +65,7 @@ function gameEngine(){
   if(snakeArr[0].y===food.y&&snakeArr[0].x===food.x){
     foodSound.play();
     score+=1;
+    speed+=0.5;
     if(score>highScoreValue){
     highScoreValue=score; 
     localStorage.setItem("highScore",JSON.stringify(highScoreValue));
@@ -100,7 +107,6 @@ function gameEngine(){
     foodElement.style.gridColumnStart=food.x;
     foodElement.classList.add("food");
     board.appendChild(foodElement);
-
   
 }
 
@@ -115,11 +121,19 @@ else{
   highscoreBox.innerHTML=`High-Score:${highScore}`
 }
 window.requestAnimationFrame(main);
-window.addEventListener("keydown",e=>{
+window.addEventListener("keydown",movedBtn)
+// WHEN USER PLAY ON MOBILE
+function movedBtn(value){
+  console.log("called",value);
   inputDir={x:0,y:1} //start game
+ if(this===window){
+   value=value.key;
+   console.log("wrong")
+ }
   moveSound.play();
-  switch(e.key){
-    case "ArrowUp":console.log("ArrowUp");
+  
+  switch(value){
+    case "ArrowUp":
                    inputDir.x=0;
                    inputDir.y=-1;
       break;
@@ -140,5 +154,18 @@ window.addEventListener("keydown",e=>{
       break;
     
     default:break;
-  }
+  }}
+
+upBtn.addEventListener("click", function() {
+  movedBtn.call(upBtn, "ArrowUp");
 });
+downBtn.addEventListener("click", function() {
+  movedBtn.call(downBtn, "ArrowDown");
+});
+leftBtn.addEventListener("click", function() {
+  movedBtn.call(leftBtn, "ArrowLeft");
+});
+rightBtn.addEventListener("click", function() {
+  movedBtn.call(rightBtn, "ArrowRight");
+});
+
