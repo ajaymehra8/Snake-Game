@@ -14,6 +14,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x:hidden;
+  font-family: 'New Tegomin', serif;
+
 }
 #scoreBox,#highscoreBox{
   position: absolute;
@@ -21,7 +24,6 @@
   right:20px;
   font-size:19px;
   font-weight:bold;
-  font-family: 'New Tegomin', serif;
 }
 #highscoreBox{
   top:40px;
@@ -30,7 +32,7 @@
   background: linear-gradient(rgb(170,236,170),rgb(236,236,167));
   border: 1px solid black;
   width: 90vmin;
-  height: 92vmin;
+  height: 90vmin;
   display: grid;
   grid-template-columns:repeat(18,1fr);
    grid-template-rows:repeat(18,1fr);
@@ -52,4 +54,65 @@
   background:linear-gradient(red,purple);
   border: .25vmin solid black;
   border-radius: 8px;
+}
+.upDown{
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+ position:absolute;
+  
+}
+button{
+  padding:5px 10px;
+  border:none;
+  background: none;
+  font-weight: bold;
+  display: none;
+  transition:all 0.2s ease;
+}
+.up:hover{
+ padding-bottom:20px;
+  color:red;
+}
+.bottom:hover{
+ padding-top:20px;
+    color:red;
+
+}
+.left:hover{
+ padding-right:20px;
+    color:red;
+
+}
+.right:hover{
+ padding-left:20px;
+    color:red;
+
+}
+.leftRight{
+  display:flex;
+  flex-direction:row;
+  gap:40px;
+
+position:absolute;
+  
+}
+.keys{
+  position:relative;
+  bottom:-50vw; 
+   right:40%;
+ margin-top:20px;
+  display:grid;
+  place-items:center;
+}
+
+@media(400px>=width){
+  #board{
+   width:82vmin;
+    height:80vmin;
+   margin-top:-25px;
+  }
+  button{
+    display: block;
+  }
 }
